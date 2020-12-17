@@ -24,47 +24,53 @@ class TicTacToe {
 
         //Prompt the user continuously for next position until game ends
         while(true){
-            //Take User Input
-            Scanner scan = new Scanner(System.in);
-            System.out.println("Enter your position (1-9):");
-            int playerPos = scan.nextInt();
-
-            //TODO: Need to remove -- For Test Purpose Only -- Dead Code --
-            //System.out.println("Player X Entered @ position : " + playerPos);
-
-            //Checking if the player X entered in wrong position, occupied positions both by cpu as well as player X
-            while(playerPostions.contains(playerPos) || cpuPositions.contains(playerPostions) ){
-                System.out.println("Position is taken ! Please Enter a Correct Positions");
-                 playerPos = scan.nextInt();
-            }
-
-            // Placing cross to players selected position
-            placePiece(gameBoard, playerPos,"player");
-            //Letting CPU choose random position out of 9 available positions
-            Random random = new Random();
-            int cpuPos = random.nextInt(9)+1;
-            //TODO: Need to remove -- For Test Purpose Only -- Dead Code --
-            //System.out.println("BOT Entered at Postion : " + cpuPos);
-
-            //Checking if the cpu entered in occupied positions both by cpu as well as player X
-            while(playerPostions.contains(cpuPos) || cpuPositions.contains(cpuPos) ){
-                //TODO: Need to remove -- For Test Purpose Only -- Dead Code --
-                //System.out.println("Position taken! Entering a new positions");
-                cpuPos = random.nextInt(9) + 1;
-            }
-
-            //Adding CPU as Player to the Game
-            placePiece(gameBoard, cpuPos,"cpu");
-
-            //Display the existing board
-            createGameBoard(gameBoard);
-
+            playerXMakesMove(gameBoard);
+            cpuOMakesMove(gameBoard);
             //Checking the winner of the gane
             String result = checkWinner();
-
             //exiting once you won
             exitGame(result);
         }
+    }
+
+    private static void cpuOMakesMove(char[][] gameBoard) {
+        //Letting CPU choose random position out of 9 available positions
+        Random random = new Random();
+        int cpuPos = random.nextInt(9)+1;
+        //TODO: Need to remove -- For Test Purpose Only -- Dead Code --
+        //System.out.println("BOT Entered at Postion : " + cpuPos);
+
+        //Checking if the cpu entered in occupied positions both by cpu as well as player X
+        while(playerPostions.contains(cpuPos) || cpuPositions.contains(cpuPos) ){
+            //TODO: Need to remove -- For Test Purpose Only -- Dead Code --
+            //System.out.println("Position taken! Entering a new positions");
+            cpuPos = random.nextInt(9) + 1;
+        }
+
+        //Adding CPU as Player to the Game
+        placePiece(gameBoard, cpuPos,"cpu");
+
+        //Display the existing board
+        createGameBoard(gameBoard);
+    }
+
+    private static void playerXMakesMove(char[][] gameBoard) {
+        //Take User Input
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter your position (1-9):");
+        int playerPos = scan.nextInt();
+
+        //TODO: Need to remove -- For Test Purpose Only -- Dead Code --
+        //System.out.println("Player X Entered @ position : " + playerPos);
+
+        //Checking if the player X entered in wrong position, occupied positions both by cpu as well as player X
+        while(playerPostions.contains(playerPos) || cpuPositions.contains(playerPostions) ){
+            System.out.println("Position is taken ! Please Enter a Correct Positions");
+             playerPos = scan.nextInt();
+        }
+
+        // Placing cross to players selected position
+        placePiece(gameBoard, playerPos,"player");
     }
 
     private static void exitGame(String result) {
