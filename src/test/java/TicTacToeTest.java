@@ -32,6 +32,15 @@ public class TicTacToeTest {
         assertEquals(gameBoard[0][0],'O');
     }
 
+    @Test
+    public void placePostionForPlayerAndCPU(){
+        char[][] gameBoard = mockGameBoard();
+        TicTacToe.placePiece(gameBoard,9,"cpu");
+        TicTacToe.placePiece(gameBoard,1,"player");
+        assertEquals(gameBoard[0][0],'X');
+        assertEquals(gameBoard[3][4],'O');
+    }
+
 
     private char[][] mockGameBoard() {
         char[][] gameBoard = {{' ','|',' ','|',' '},

@@ -13,15 +13,22 @@ class TicTacToe {
                 {'-','+','-','+','-'},
                 {' ','|',' ','|',' '}
         };
-
+        // Creating a Game Board
         createGameBoard(gameBoard);
 
+        //Take User Input
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter your position (1-9):");
         int position = scan.nextInt();
 
         System.out.println("you crossed Postion : " + position);
+
+        // Placing cross to players selected position
         TicTacToe.placePiece(gameBoard, position,"player");
+
+        //Adding CPU as Player to the Game
+        TicTacToe.placePiece(gameBoard, 9,"cpu");
+
         createGameBoard(gameBoard);
     }
 
