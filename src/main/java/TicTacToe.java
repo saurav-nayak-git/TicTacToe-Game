@@ -3,6 +3,9 @@ import java.util.*;
 
 class TicTacToe {
 
+    static ArrayList<Integer> playerPostions = new ArrayList<Integer>();
+    static ArrayList<Integer> cpuPositions = new ArrayList<Integer>();
+
     public static void main(String[] args) {
         startTicTacToeGame();
     }
@@ -29,6 +32,7 @@ class TicTacToe {
             // Placing cross to players selected position
             TicTacToe.placePiece(gameBoard, playerPosition,"player");
 
+            //Letting CPU choose random position out of 9 available positions
             Random random = new Random();
             int cpuPosition = random.nextInt(9)+1;
             System.out.println("Robot Entered at Postion : " + cpuPosition);
@@ -38,13 +42,26 @@ class TicTacToe {
 
             createGameBoard(gameBoard);
 
-            checkWinner();
+            //Checking the winner
+            String result = checkWinner();
+            System.out.println(result);
         }
     }
 
 
     public static String checkWinner(){
         List<List> winning = getWinnerPositions();
+
+        for(List l: winning){
+             if(playerPostions.containsAll(l)){
+                 return "Congratulations you won!";
+             }else if(cpuPositions.containsAll(l)){
+                 return " CPU wins! Better Luck Next Time";
+             }else if(playerPostions.size() + cpuPositions.size() ==9){
+                 return "DRAW!!!";
+             }
+         }
+
         return "";
     }
 
@@ -83,17 +100,21 @@ class TicTacToe {
         }
     }
 
-    public static void placePiece(char[][] gameBoard, int pos, String user){
+    public static void placePiece(char[][] gameBoard, int position, String user){
 
         char symbol = ' ';
 
         if(user.equals("player")){
             symbol ='X';
+            // keeping track of Player Postion as we play
+            playerPostions.add(position);
         }else if(user.equals("cpu")){
             symbol = 'O';
+            //keeping track of CPU position as we play
+            cpuPositions.add(position);
         }
 
-        switch (pos) {
+        switch (position) {
             case 1:
                 gameBoard[0][0] = symbol;
                 break;

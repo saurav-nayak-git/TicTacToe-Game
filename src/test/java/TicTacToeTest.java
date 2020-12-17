@@ -57,6 +57,22 @@ public class TicTacToeTest {
     }
 
     @Test
+    public void playerWonPlacingSymbolInFirstColum(){
+        char[][] gameBoard = mockGameBoard();
+        TicTacToe.placePiece(gameBoard,7,"player");
+        TicTacToe.placePiece(gameBoard,4,"player");
+        TicTacToe.placePiece(gameBoard,1,"player");
+
+        TicTacToe.placePiece(gameBoard,3,"cpu");
+        TicTacToe.placePiece(gameBoard,5,"cpu");
+        TicTacToe.placePiece(gameBoard,9,"cpu");
+
+        String result = TicTacToe.checkWinner();
+        System.out.println(result);
+        assertEquals(result,"Congratulations you won!");
+    }
+
+    @Test
     public void WinnerPositionsCriteriaChecks(){
         List<List> winnerPos = TicTacToe.getWinnerPositions();
         List topRow = Arrays.asList(1,2,3);
