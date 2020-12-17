@@ -40,11 +40,6 @@ class TicTacToe {
 
             // Placing cross to players selected position
             placePiece(gameBoard, playerPos,"player");
-            //Checking the winner of the winner
-            String result = checkWinner();
-            //Exit the Game if Player X won
-            exitGame(result);
-
             //Letting CPU choose random position out of 9 available positions
             Random random = new Random();
             int cpuPos = random.nextInt(9)+1;
@@ -65,7 +60,7 @@ class TicTacToe {
             createGameBoard(gameBoard);
 
             //Checking the winner of the gane
-            result = checkWinner();
+            String result = checkWinner();
 
             //exiting once you won
             exitGame(result);
