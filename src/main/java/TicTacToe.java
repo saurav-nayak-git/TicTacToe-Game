@@ -81,12 +81,13 @@ class TicTacToe {
 
 
     public static String checkWinner(){
-        List<List> winning = getWinnerPositions();
+        List<List> winningCriteriaList = getWinnerPositions();
 
-        for(List l: winning){
-             if(playerPostions.containsAll(l)){
+        // Checking for each wining criteria if plaues have reached the position combination
+        for(List winningCriteria : winningCriteriaList){
+             if(playerPostions.containsAll(winningCriteria)){
                  return "Congratulations you won!";
-             }else if(cpuPositions.containsAll(l)){
+             }else if(cpuPositions.containsAll(winningCriteria)){
                  return "CPU wins! Better Luck Next Time";
              }else if(playerPostions.size() + cpuPositions.size() ==9){
                  return "DRAW!!!";
