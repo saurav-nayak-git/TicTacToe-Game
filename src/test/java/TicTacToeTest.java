@@ -77,6 +77,23 @@ public class TicTacToeTest {
         assertEquals(result,"Congratulations you won!");
     }
 
+    @Test
+    public void cpuWonWithHorizontalLine(){
+        char[][] gameBoard = mockGameBoard();
+        TicTacToe.placePiece(gameBoard,7,"player");
+        TicTacToe.placePiece(gameBoard,9,"player");
+        TicTacToe.placePiece(gameBoard,1,"player");
+
+        TicTacToe.placePiece(gameBoard,4,"cpu");
+        TicTacToe.placePiece(gameBoard,5,"cpu");
+        TicTacToe.placePiece(gameBoard,6,"cpu");
+
+        TicTacToe.createGameBoard(gameBoard);
+
+        String result = TicTacToe.checkWinner();
+        System.out.println(result);
+        assertEquals(result,"CPU wins! Better Luck Next Time");
+    }
 
     @Test
     public void WinnerPositionsCriteriaChecks(){
