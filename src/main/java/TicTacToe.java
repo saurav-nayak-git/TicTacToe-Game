@@ -18,12 +18,10 @@ class TicTacToe {
 
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter your position (1-9):");
-        int pos = scan.nextInt();
+        int position = scan.nextInt();
 
-        System.out.println(pos);
-
-
-
+        System.out.println("you crossed Postion : " + position);
+        TicTacToe.placePiece(gameBoard, position,"player");
         createGameBoard(gameBoard);
     }
 
@@ -38,33 +36,41 @@ class TicTacToe {
 
     public static void placePiece(char[][] gameBoard, int pos, String user){
 
-         switch (pos) {
+        char symbol = ' ';
+
+        if(user.equals("player")){
+            symbol ='X';
+        }else if(user.equals("cpu")){
+            symbol = 'O';
+        }
+
+        switch (pos) {
             case 1:
-                gameBoard[0][0] = 'X';
+                gameBoard[0][0] = symbol;
                 break;
             case 2:
-                gameBoard[0][2] = 'X';
+                gameBoard[0][2] = symbol;
                 break;
             case 3:
-                gameBoard[0][4] = 'X';
+                gameBoard[0][4] = symbol;
                 break;
             case 4:
-                gameBoard[2][0] = 'X';
+                gameBoard[2][0] = symbol;
                 break;
             case 5:
-                gameBoard[2][2] = 'X';
+                gameBoard[2][2] = symbol;
                 break;
             case 6:
-                gameBoard[2][4] = 'X';
+                gameBoard[2][4] = symbol;
                 break;
             case 7:
-                gameBoard[3][0] = 'X';
+                gameBoard[3][0] = symbol;
                 break;
             case 8:
-                gameBoard[3][2] = 'X';
+                gameBoard[3][2] = symbol;
                 break;
             case 9:
-                gameBoard[3][4] = 'X';
+                gameBoard[3][4] = symbol;
                 break;
             default:
                 break;
