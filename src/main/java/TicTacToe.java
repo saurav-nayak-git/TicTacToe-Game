@@ -18,24 +18,27 @@ class TicTacToe {
         // Creating a Game Board
         createGameBoard(gameBoard);
 
-        //Take User Input
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Enter your position (1-9):");
-        int playerPosition = scan.nextInt();
+        //Continue the Execution
+        while(true){
+            //Take User Input
+            Scanner scan = new Scanner(System.in);
+            System.out.println("Enter your position (1-9):");
+            int playerPosition = scan.nextInt();
 
-        System.out.println("You crossed at Postion : " + playerPosition);
+            System.out.println("You crossed at Postion : " + playerPosition);
 
-        // Placing cross to players selected position
-        TicTacToe.placePiece(gameBoard, playerPosition,"player");
+            // Placing cross to players selected position
+            TicTacToe.placePiece(gameBoard, playerPosition,"player");
 
-        Random random = new Random();
-        int cpuPosition = random.nextInt(9)+1;
-        System.out.println("Robot Entered at Postion : " + cpuPosition);
+            Random random = new Random();
+            int cpuPosition = random.nextInt(9)+1;
+            System.out.println("Robot Entered at Postion : " + cpuPosition);
 
-        //Adding CPU as Player to the Game
-        TicTacToe.placePiece(gameBoard, cpuPosition,"cpu");
+            //Adding CPU as Player to the Game
+            TicTacToe.placePiece(gameBoard, cpuPosition,"cpu");
 
-        createGameBoard(gameBoard);
+            createGameBoard(gameBoard);
+        }
     }
 
     public static void createGameBoard(char[][] gameBoard) {
