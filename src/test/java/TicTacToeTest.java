@@ -118,6 +118,7 @@ public class TicTacToeTest {
     @Test
     public void cpuOWinsByHorizontalLine(){
         char[][] gameBoard = mockGameBoard();
+
         TicTacToe.placePiece(gameBoard,3,"player");
         TicTacToe.placePiece(gameBoard,9,"player");
         TicTacToe.placePiece(gameBoard,1,"player");
@@ -132,6 +133,29 @@ public class TicTacToeTest {
         System.out.println();
         System.out.println(result);
         assertEquals(result,"CPU wins! Better Luck Next Time");
+    }
+
+    @Test
+    public void addingDrawScenario(){
+        char[][] gameBoard = mockGameBoard();
+
+        TicTacToe.placePiece(gameBoard,1,"player");
+        TicTacToe.placePiece(gameBoard,3,"cpu");
+        TicTacToe.placePiece(gameBoard,6,"player");
+        TicTacToe.placePiece(gameBoard,9,"cpu");
+        TicTacToe.placePiece(gameBoard,8,"player");
+        TicTacToe.placePiece(gameBoard,2,"cpu");
+        TicTacToe.placePiece(gameBoard,4,"player");
+        TicTacToe.placePiece(gameBoard,7,"cpu");
+        TicTacToe.placePiece(gameBoard,5,"cpu");
+
+
+        TicTacToe.createGameBoard(gameBoard);
+
+        String result = TicTacToe.checkWinner();
+        System.out.println();
+        System.out.println(result);
+        assertEquals(result,"DRAW!!!");
     }
 
 
@@ -176,9 +200,9 @@ public class TicTacToeTest {
        assertEquals(gameBoard[0][0],'X');
        assertEquals(gameBoard[4][0],'X');
        assertEquals(gameBoard[4][0],'X');
-       assertEquals(gameBoard[0][0],'O');
-       assertEquals(gameBoard[4][0],'O');
-       assertEquals(gameBoard[4][0],'O');
+       assertEquals(gameBoard[0][4],'O');
+       assertEquals(gameBoard[2][2],'O');
+       assertEquals(gameBoard[4][4],'O');
    }
 
     private char[][] mockGameBoard() {
