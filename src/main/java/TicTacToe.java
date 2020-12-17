@@ -56,7 +56,7 @@ class TicTacToe {
              if(playerPostions.containsAll(l)){
                  return "Congratulations you won!";
              }else if(cpuPositions.containsAll(l)){
-                 return " CPU wins! Better Luck Next Time";
+                 return "CPU wins! Better Luck Next Time";
              }else if(playerPostions.size() + cpuPositions.size() ==9){
                  return "DRAW!!!";
              }
