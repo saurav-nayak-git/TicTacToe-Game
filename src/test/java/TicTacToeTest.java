@@ -38,7 +38,7 @@ public class TicTacToeTest {
         TicTacToe.placePiece(gameBoard,9,"cpu");
         TicTacToe.placePiece(gameBoard,1,"player");
         assertEquals(gameBoard[0][0],'X');
-        assertEquals(gameBoard[3][4],'O');
+        assertEquals(gameBoard[4][4],'O');
     }
 
 

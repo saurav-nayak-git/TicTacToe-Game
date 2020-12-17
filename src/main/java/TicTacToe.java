@@ -1,3 +1,5 @@
+import javax.sound.midi.Soundbank;
+import java.util.Random;
 import java.util.Scanner;
 
 class TicTacToe {
@@ -19,15 +21,19 @@ class TicTacToe {
         //Take User Input
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter your position (1-9):");
-        int position = scan.nextInt();
+        int playerPosition = scan.nextInt();
 
-        System.out.println("you crossed Postion : " + position);
+        System.out.println("You crossed at Postion : " + playerPosition);
 
         // Placing cross to players selected position
-        TicTacToe.placePiece(gameBoard, position,"player");
+        TicTacToe.placePiece(gameBoard, playerPosition,"player");
+
+        Random random = new Random();
+        int cpuPosition = random.nextInt(9)+1;
+        System.out.println("Robot Entered at Postion : " + cpuPosition);
 
         //Adding CPU as Player to the Game
-        TicTacToe.placePiece(gameBoard, 9,"cpu");
+        TicTacToe.placePiece(gameBoard, cpuPosition,"cpu");
 
         createGameBoard(gameBoard);
     }
@@ -71,13 +77,13 @@ class TicTacToe {
                 gameBoard[2][4] = symbol;
                 break;
             case 7:
-                gameBoard[3][0] = symbol;
+                gameBoard[4][0] = symbol;
                 break;
             case 8:
-                gameBoard[3][2] = symbol;
+                gameBoard[4][2] = symbol;
                 break;
             case 9:
-                gameBoard[3][4] = symbol;
+                gameBoard[4][4] = symbol;
                 break;
             default:
                 break;
