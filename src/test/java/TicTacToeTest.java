@@ -12,7 +12,8 @@ public class TicTacToeTest {
     public  void createGameBoard(){
         char[][] gameBoard = mockGameBoard();
         TicTacToe.createGameBoard(gameBoard);
-        assertTrue(true);
+        assertEquals(gameBoard[0][1],'|');
+        assertEquals(gameBoard[1][1],'+');
     }
 
     @Test
