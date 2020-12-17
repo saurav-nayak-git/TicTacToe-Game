@@ -95,6 +95,46 @@ public class TicTacToeTest {
         assertEquals(result,"CPU wins! Better Luck Next Time");
     }
 
+
+    @Test
+    public void playerXWinsByHorizontalLine(){
+        char[][] gameBoard = mockGameBoard();
+        TicTacToe.placePiece(gameBoard,1,"player");
+        TicTacToe.placePiece(gameBoard,5,"player");
+        TicTacToe.placePiece(gameBoard,9,"player");
+
+        TicTacToe.placePiece(gameBoard,3,"cpu");
+        TicTacToe.placePiece(gameBoard,8,"cpu");
+        TicTacToe.placePiece(gameBoard,7,"cpu");
+
+        TicTacToe.createGameBoard(gameBoard);
+
+        String result = TicTacToe.checkWinner();
+        System.out.println();
+        System.out.println(result);
+        assertEquals(result,"Congratulations you won!");
+    }
+
+    @Test
+    public void cpuOWinsByHorizontalLine(){
+        char[][] gameBoard = mockGameBoard();
+        TicTacToe.placePiece(gameBoard,3,"player");
+        TicTacToe.placePiece(gameBoard,9,"player");
+        TicTacToe.placePiece(gameBoard,1,"player");
+
+        TicTacToe.placePiece(gameBoard,4,"cpu");
+        TicTacToe.placePiece(gameBoard,5,"cpu");
+        TicTacToe.placePiece(gameBoard,6,"cpu");
+
+        TicTacToe.createGameBoard(gameBoard);
+
+        String result = TicTacToe.checkWinner();
+        System.out.println();
+        System.out.println(result);
+        assertEquals(result,"CPU wins! Better Luck Next Time");
+    }
+
+
     @Test
     public void WinnerPositionsCriteriaChecks(){
         List<List> winnerPos = TicTacToe.getWinnerPositions();
