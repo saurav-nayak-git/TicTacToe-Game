@@ -1,3 +1,4 @@
+import com.sun.xml.internal.ws.util.StringUtils;
 
 import java.util.*;
 
@@ -17,6 +18,7 @@ class TicTacToe {
                 {'-','+','-','+','-'},
                 {' ','|',' ','|',' '}
         };
+
         // Creating a Game Board
         createGameBoard(gameBoard);
 
@@ -25,26 +27,43 @@ class TicTacToe {
             //Take User Input
             Scanner scan = new Scanner(System.in);
             System.out.println("Enter your position (1-9):");
-            int playerPosition = scan.nextInt();
+            int playerPos = scan.nextInt();
 
-            System.out.println("You crossed at Postion : " + playerPosition);
+            System.out.println("Player X Entered @ position : " + playerPos);
+            //Checking if the player X entered in wrong position, occupied positions both by cpu as well as player X
+            while(playerPostions.contains(playerPos) || cpuPositions.contains(playerPostions) ){
+                System.out.println("Position is taken ! Please Enter a Correct Positions");
+                 playerPos = scan.nextInt();
+            }
 
             // Placing cross to players selected position
-            TicTacToe.placePiece(gameBoard, playerPosition,"player");
+            TicTacToe.placePiece(gameBoard, playerPos,"player");
 
             //Letting CPU choose random position out of 9 available positions
             Random random = new Random();
-            int cpuPosition = random.nextInt(9)+1;
-            System.out.println("Robot Entered at Postion : " + cpuPosition);
+            int cpuPos = random.nextInt(9)+1;
+            System.out.println("BOT Entered at Postion : " + cpuPos);
+
+            //Checking if the cpu entered in occupied positions both by cpu as well as player X
+            while(playerPostions.contains(cpuPos) || cpuPositions.contains(cpuPos) ){
+                //TODO: Need to remove -- Dead Code --
+                //System.out.println("Position taken! Entering a new positions");
+                cpuPos = random.nextInt(9) + 1;
+            }
 
             //Adding CPU as Player to the Game
-            TicTacToe.placePiece(gameBoard, cpuPosition,"cpu");
+            TicTacToe.placePiece(gameBoard, cpuPos,"cpu");
 
             createGameBoard(gameBoard);
 
             //Checking the winner
             String result = checkWinner();
             System.out.println(result);
+
+            //exiting once you won
+            if(result != ""){
+                System.exit(0);
+            }
         }
     }
 
