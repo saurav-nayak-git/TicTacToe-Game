@@ -29,7 +29,9 @@ class TicTacToe {
             System.out.println("Enter your position (1-9):");
             int playerPos = scan.nextInt();
 
-            System.out.println("Player X Entered @ position : " + playerPos);
+            //TODO: Need to remove -- For Test Purpose Only -- Dead Code --
+            //System.out.println("Player X Entered @ position : " + playerPos);
+
             //Checking if the player X entered in wrong position, occupied positions both by cpu as well as player X
             while(playerPostions.contains(playerPos) || cpuPositions.contains(playerPostions) ){
                 System.out.println("Position is taken ! Please Enter a Correct Positions");
@@ -37,33 +39,43 @@ class TicTacToe {
             }
 
             // Placing cross to players selected position
-            TicTacToe.placePiece(gameBoard, playerPos,"player");
+            placePiece(gameBoard, playerPos,"player");
+            //Checking the winner of the winner
+            String result = checkWinner();
+            //Exit the Game if Player X won
+            exitGame(result);
 
             //Letting CPU choose random position out of 9 available positions
             Random random = new Random();
             int cpuPos = random.nextInt(9)+1;
-            System.out.println("BOT Entered at Postion : " + cpuPos);
+            //TODO: Need to remove -- For Test Purpose Only -- Dead Code --
+            //System.out.println("BOT Entered at Postion : " + cpuPos);
 
             //Checking if the cpu entered in occupied positions both by cpu as well as player X
             while(playerPostions.contains(cpuPos) || cpuPositions.contains(cpuPos) ){
-                //TODO: Need to remove -- Dead Code --
+                //TODO: Need to remove -- For Test Purpose Only -- Dead Code --
                 //System.out.println("Position taken! Entering a new positions");
                 cpuPos = random.nextInt(9) + 1;
             }
 
             //Adding CPU as Player to the Game
-            TicTacToe.placePiece(gameBoard, cpuPos,"cpu");
+            placePiece(gameBoard, cpuPos,"cpu");
 
+            //Display the existing board
             createGameBoard(gameBoard);
 
-            //Checking the winner
-            String result = checkWinner();
-            System.out.println(result);
+            //Checking the winner of the gane
+            result = checkWinner();
 
             //exiting once you won
-            if(result != ""){
-                System.exit(0);
-            }
+            exitGame(result);
+        }
+    }
+
+    private static void exitGame(String result) {
+        if(result.length()>0){
+            System.out.println(result);
+            System.exit(0);
         }
     }
 
