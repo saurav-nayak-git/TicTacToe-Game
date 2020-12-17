@@ -1,5 +1,3 @@
-import com.sun.xml.internal.ws.util.StringUtils;
-
 import java.util.*;
 
 class TicTacToe {
@@ -12,12 +10,7 @@ class TicTacToe {
     }
 
     private static void startTicTacToeGame() {
-        char[][] gameBoard = {{' ','|',' ','|',' '},
-                {'-','+','-','+','-'},
-                {' ','|',' ','|',' '},
-                {'-','+','-','+','-'},
-                {' ','|',' ','|',' '}
-        };
+        char[][] gameBoard = fetchGameBoard();
 
         // Creating a Game Board
         createGameBoard(gameBoard);
@@ -25,12 +18,25 @@ class TicTacToe {
         //Prompt the user continuously for next position until game ends
         while(true){
             playerXMakesMove(gameBoard);
+
             cpuOMakesMove(gameBoard);
+
             //Checking the winner of the gane
             String result = checkWinner();
+
             //exiting once you won
             exitGame(result);
         }
+    }
+
+    private static char[][] fetchGameBoard() {
+        char[][] gameBoard = {{' ','|',' ','|',' '},
+                {'-','+','-','+','-'},
+                {' ','|',' ','|',' '},
+                {'-','+','-','+','-'},
+                {' ','|',' ','|',' '}
+        };
+        return gameBoard;
     }
 
     private static void cpuOMakesMove(char[][] gameBoard) {
