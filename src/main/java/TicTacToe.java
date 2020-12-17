@@ -1,6 +1,5 @@
-import javax.sound.midi.Soundbank;
-import java.util.Random;
-import java.util.Scanner;
+
+import java.util.*;
 
 class TicTacToe {
 
@@ -18,7 +17,7 @@ class TicTacToe {
         // Creating a Game Board
         createGameBoard(gameBoard);
 
-        //Continue the Execution
+        //Prompt the user continuously for next position until game ends
         while(true){
             //Take User Input
             Scanner scan = new Scanner(System.in);
@@ -38,7 +37,41 @@ class TicTacToe {
             TicTacToe.placePiece(gameBoard, cpuPosition,"cpu");
 
             createGameBoard(gameBoard);
+
+            checkWinner();
         }
+    }
+
+
+    public static String checkWinner(){
+        List<List> winning = getWinnerPositions();
+        return "";
+    }
+
+
+    public static List<List> getWinnerPositions() {
+        // Tracking the Winner positions
+        List topRow = Arrays.asList(1,2,3);
+        List middleRow = Arrays.asList(4,5,6);
+        List bottomRow = Arrays.asList(7,8,9);
+
+        List leftColumn = Arrays.asList(1,4,7);
+        List middleColumn = Arrays.asList(2,5,8);
+        List rightColumn = Arrays.asList(3,6,9);
+
+        List diagonalLeft = Arrays.asList(1,5,9);
+        List diagonalRight = Arrays.asList(7,5,3);
+
+        List<List> winning = new ArrayList<List>();
+        winning.add(topRow);
+        winning.add(middleRow);
+        winning.add(bottomRow);
+        winning.add(leftColumn);
+        winning.add(middleColumn);
+        winning.add(rightColumn);
+        winning.add(diagonalLeft);
+        winning.add(diagonalRight);
+        return winning;
     }
 
     public static void createGameBoard(char[][] gameBoard) {
